@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<center>
+<head>
+<h1 fontsyle="arial">Instagram</h1>
+<meta charset="ISO-8859-1">
+<title>Instagram</title>
+</head>
+<style>
+     
+ body{
+ background-color:pink ;	}
+</style>
+<body>
+	<form method="get" >
+		<table>
+			<tr>
+				<td><input type="text" name="uname" id="uname" max="25" min="6"
+					placeholder="username" required></td>
+			</tr>
+			<tr>
+				<td><input type="password" name="pwd" id="pwd" max="25" min="6"
+					placeholder="password" required></td>
+			</tr>
+			<tr>
+				
+				<td><input type="button" name="submit" id="submit"
+					value="login" onclick="loginaj()"></td>
+					<td></td>
+			</tr>
+			<tr>
+				<td>
+					<div id="display"></div>
+				</td>
+		</table>
+	</form>
+	<script>
+function loginaj()
+{
+ var sname, spwd , slog;
+    alert=("loading...");
+    sname = document.getElementById("uname").value;
+    spwd = document.getElementById("pwd").value;
+    slog = document.getElementById("submit").value;
+    
+    var xhttp = new XMLHttpRequest();
+    var params = "?uname=" + sname + "&pwd=" + spwd;
+    xhttp.open("GET", "http://localhost:8080/dywebproject/servlets/myLogin" + params);
+	xhttp.onreadystatechange = function() {
+
+		document.getElementById("display").innerHTML = this.responseText;
+	}
+
+	xhttp.send();
+}
+
+
+</script>
+
+</body>
+</center>
+</html>
